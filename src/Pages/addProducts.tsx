@@ -6,39 +6,37 @@ import { useState } from "react";
 const Addproducts: React.FC = () => {
 
 
-  const [title, settitle] = useState<string>("")
-  const [price, setProductPrice] = useState<number | undefined>(undefined)
-  const [descript, setProductDescript] = useState<string>("")
+  const [title, setTitle] = useState<string>('')
+  const [price, setPrice] = useState<number | undefined>(undefined)
+  const [description, setdescription] = useState<string>('')
 
-  let AddProducF = async () => {
-    if (!title || !price || !descript) {
+  let AddF = async () => {
+    if (!title || !price || !description) {
       alert("Пожалуйста, заполните все поля.");
       return;
     }
-    try {
-      let AddProdctData = await axios({
-        method: "post",
-        url: `https://fakestoreapi.com/products`,
-        data: {
-          title: title,
-          price: price.toString(),
-          image: "https://w.forfun.com/fetch/07/07a5912517ee8e518442ba5631bf417f.jpeg",
-          category: "electronics",
-          description: descript,
-        },
-        headers: {
-          "Content-Type": 'application/json; charset=utf-8', // Явно указываем формат JSON
-        },
-      });
+    let ProductData = await axios({
+      method: 'POST',
+      url: `https://api.escuelajs.co/api/v1/products/`,
+      data: {
+        "title": title,
+        "price": price,
+        "description": description,
+        "categoryId": 1,
+        "images": ["https://s1.1zoom.ru/big3/95/347423-svetik.jpg"]
+      }
+    })
 
-      console.log(AddProdctData);
-      alert("Продукт добавлен успешно!");
-      back()
-    } catch (error) {
-      console.error("Ошибка при добавлении продукта:", error);
-      alert("Не удалось добавить продукт.");
+    console.log(ProductData)
+    if (ProductData.status = 200) {
+      console.log(ProductData)
+
     }
   }
+
+
+
+
 
   const naviagte = useNavigate()
   function back() {
@@ -58,10 +56,12 @@ const Addproducts: React.FC = () => {
             </h3>
           </div>
           <div className="col-12 mt-4 text-center">
-            <input className="rounded mt-3" type="text" onChange={(e) => settitle(String(e.target.value))} /><br />title < br />
-            <input className="rounded mt-3" type="number" onChange={(e) => setProductPrice(Number(e.target.value))} /><br />price < br />
-            <input className="rounded mt-3" type="text" onChange={(e) => setProductDescript(String(e.target.value))} /><br />description < br />
-            <button className="btn btn-success mt-3" onClick={AddProducF}>submit</button><br />
+
+            <input className="rounded" type="text" name="title" id="title" onChange={(e) => setTitle(String(e.target.value))} /><br />title < br />
+            <input className="rounded" type="number" name="price" id="price" onChange={(e) => setPrice(Number(e.target.value))} /><br />price < br />
+            <input className="rounded" type="text" name="description" id="description" onChange={(e) => setdescription(String(e.target.value))} /><br />description < br />
+            <button className="btn btn-success mt-3" onClick={AddF}>submit</button><br />
+
           </div>
         </div>
 

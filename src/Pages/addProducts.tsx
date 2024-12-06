@@ -18,7 +18,7 @@ const Addproducts: React.FC = () => {
     try {
       let AddProdctData = await axios({
         method: "post",
-        url: `https://fakestoreapi.com/carts`,
+        url: `https://fakestoreapi.com/products`,
         data: {
           title: title,
           price: price.toString(),

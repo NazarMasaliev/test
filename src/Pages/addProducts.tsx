@@ -33,6 +33,7 @@ const Addproducts: React.FC = () => {
 
       console.log(AddProdctData);
       alert("Продукт добавлен успешно!");
+      back()
     } catch (error) {
       console.error("Ошибка при добавлении продукта:", error);
       alert("Не удалось добавить продукт.");

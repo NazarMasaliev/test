@@ -98,11 +98,7 @@ const MainPage: React.FC = () => {
                   {findProduct.map((i: any) =>
                     <div className="col">
                       <div className="card" style={{ width: "15rem" }}>
-                        {i.images.map((i: any) =>
-                          <>
-                            <img src={`${i}`} className="card-img-top imgCard" alt="..." />
-                          </>
-                        )}
+                        <img src={`${i.images.map((i: any) => i)}`} className="card-img-top imgCard" alt="..." />
                         <div className="card-body">
                           <div className="product-title mt-2"><h5 className="card-title">{i.title}</h5></div>
                           <button className="btn btn-primary mt-3" onClick={() => ProductInfo(i.id)}> Go somewhere</button>
@@ -143,11 +139,7 @@ const MainPage: React.FC = () => {
                     <>
                       <div className="col-3 mt-4">
                         <div className="card" style={{ width: "16rem" }}>
-                          {i.images.map((i: any) =>
-                            <>
-                              <img src={`${i}`} className="card-img-top imgCard" alt="..." />
-                            </>
-                          )}
+                          <img src={`${i.images.map((i: any) => i)}`} className="card-img-top imgCard" alt="..." />
                           <div className="card-body">
                             <div className="product-title">
                               <h5 className="card-title">{i.title}</h5>
@@ -189,11 +181,7 @@ const MainPage: React.FC = () => {
                   {products.filter((i: any) => FavoriteProducts.includes(i.id)).map((i: any) => (
                     <div className="col-3 mt-4">
                       <div className="card" style={{ width: "16rem" }}>
-                        {i.images.map((i: any) =>
-                          <>
-                            <img src={`${i}`} className="card-img-top imgCard" alt="..." />
-                          </>
-                        )}
+                        <img src={`${i.images.map((i: any) => i)}`} className="card-img-top imgCard" alt="..." />
                         <div className="card-body">
                           <div className="product-title">
                             <h5 className="card-title">{i.title}</h5>

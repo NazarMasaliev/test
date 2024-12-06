@@ -10,8 +10,12 @@ const AboutProduct: React.FC = () => {
     title: string;
     price: number;
     description: string;
-    category: string;
-    image: string;
+    category: {
+      id:string;
+      name:string;
+      image:string;
+    }
+    images: string;
     rating: {
       count: number;
       rate: number;
@@ -23,7 +27,7 @@ const AboutProduct: React.FC = () => {
   let ProductF = async () => {
     let ProductData = await axios({
       method: 'get',
-      url: `https://fakestoreapi.com/products/${id}`,
+      url: `https://api.escuelajs.co/api/v1/products/${id}`,
     })
     console.log(ProductData)
     if (ProductData.status = 200) {
@@ -32,7 +36,7 @@ const AboutProduct: React.FC = () => {
   }
   const navigate = useNavigate()
   // UseEffect
-  function back(){
+  function back() {
     navigate(-1)
   }
   useEffect(() => {
@@ -53,10 +57,10 @@ const AboutProduct: React.FC = () => {
             <div className="col-12 border text-white" style={{ height: "600px" }}>
               <div className="row">
                 <div className="col-6">
-                  <div style={{ width: "100%", height: "600px" }} >
-                    <div className="border rounded" style={{ float: "right", width: "70%", height: "300px", marginTop: "120px", background: "#2E2E2E" }}>
+                  <div style={{ width: "100%", height: "800px" }} >
+                    <div className="border rounded" style={{ float: "right", width: "70%", height: "350px", marginTop: "120px", background: "#2E2E2E" }}>
                       <div className="border d-flex" style={{ float: "left", width: "80%", height: "80%", margin: "30px 50px", overflowX: "scroll" }}>
-                        <div style={{ flex: "0 0 auto", width: "100%", height: "100%", backgroundImage: `url("${product.image}")`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}>
+                        <div style={{ flex: "0 0 auto", width: "100%", height: "100%", backgroundImage: `url("${product.images}")`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}>
                         </div>
                       </div>
                     </div>
@@ -64,13 +68,13 @@ const AboutProduct: React.FC = () => {
                 </div>
                 <div className="col-6">
                   <div style={{ width: "100%", height: "600px" }}>
-                    <div className="border rounded" style={{ float: "left", width: "70%", height: "300px", marginTop: "120px", background: "#2E2E2E", padding: "20px" }}>
+                    <div className="border rounded" style={{ float: "left", width: "70%", height: "350px", marginTop: "120px", background: "#2E2E2E", padding: "20px" }}>
                       <div className="row">
                         <div className="col-12" style={{ height: "40px" }}>
                           <h4>{product.title}</h4>
                         </div>
                         <div className="col-12 mt-4" style={{ fontSize: "14px", height: "20px" }}>
-                          Category: {product.category}
+                          Category: {product.category.name}
                         </div>
                         <div className="col-12 mt-3 " style={{ height: "inherit" }}>
                           <p style={{ fontSize: "14px" }}>

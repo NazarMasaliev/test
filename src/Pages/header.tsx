@@ -13,9 +13,6 @@ const Header: React.FC = () => {
       <button className="btn btn-dark border m-2" onClick={AddPage}>
         Add Products
       </button>
-      <button className="btn btn-dark border m-2">
-        Favorites
-      </button>
     </div>
   )
 }

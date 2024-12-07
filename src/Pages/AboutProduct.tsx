@@ -11,9 +11,9 @@ const AboutProduct: React.FC = () => {
     price: number;
     description: string;
     category: {
-      id:string;
-      name:string;
-      image:string;
+      id: string;
+      name: string;
+      image: string;
     }
     images: string;
     rating: {
@@ -34,6 +34,21 @@ const AboutProduct: React.FC = () => {
       setProduct(ProductData.data)
     }
   }
+
+  
+  let ProductDeleteF = async () => {
+    let ProductData = await axios({
+      method: 'DELETE',
+      url: `https://api.escuelajs.co/api/v1/products/${id}`,
+    })
+    if(ProductData.status == 200){
+      console.log(ProductData)
+      alert("!Продукт успешно удален")
+      back()
+    }
+    else{}
+  }
+
   const navigate = useNavigate()
   // UseEffect
   function back() {
@@ -87,8 +102,12 @@ const AboutProduct: React.FC = () => {
                               <b style={{ fontSize: "20px" }}>${product.price}</b>
                             </div>
                             <div className="col-6" style={{ textAlign: "right" }}>
+                              <button className="btn btn-danger" onClick={ProductDeleteF}>Delete</button><br />
                             </div>
                           </div>
+                        </div>
+                        <div className="col-12 text-center">
+                          <small className="text-secondary">Удалить можно только добавленый продукт</small>
                         </div>
                       </div>
                     </div>

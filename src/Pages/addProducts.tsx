@@ -30,6 +30,8 @@ const Addproducts: React.FC = () => {
     console.log(ProductData)
     if (ProductData.status = 200) {
       console.log(ProductData)
+      alert("!Продукт успешно добавлен")
+      back()
 
     }
   }
